@@ -180,4 +180,70 @@ As a result, it is possible to compare the outcomes of the original raw SVI opti
 
 ## V. Dynamic Delta Hedging
 
+### 5.1 Assumptions
+
+To derive option prices using the volatility optimized via the Post-SVI model, the following three assumptions are introduced:
+
+**1. Utilization of Dual Delta**  
+
+$$
+\Delta_T := \frac{\partial \mathfrak{p}}{\partial k}(K_T, T; s_0), \quad T > 0, \ \Delta_0 \in \{0, 1\}
+$$
+
+- **Dual delta**, defined as a function of the strike price rather than the underlying asset price, is adopted as a state variable.
+- By doing so, the martingale property can be maintained without directly modeling the price dynamics of the underlying asset.
+- The dual delta is assumed to follow a stochastic process diffusing within the interval [1].
+
+**2. Convex Duality**  
+- The Legendre transform of the existing option price is used to reformulate the option pricing problem in the dual delta space.
+- The put option price is convex and differentiable with respect to $$ x $$, so its convex conjugate can be defined.
+- Ultimately, the expression originally formulated in terms of $$ S $$ (the underlying asset price) is transformed into an expression involving the dual delta, thereby deriving a price formula as a function of the strike price.
+
+**3. Dual Dupire Equation**  
+- Under the risk-neutral measure, the price of a put option must equal the expected value of its payoff at maturity, satisfying the Dupire equation.
+- The Dupire equation models option prices with respect to strike price and maturity, which is advantageous for analyzing option convexity and local volatility.
+- However, for the equation to hold in terms of the dual delta, the Multiplicatively Separable Volatility (MSV) condition must be satisfied.
+
+Ultimately, the goal is to transform the put option price function assumed by the conventional Dupire equation into an expression involving the dual delta, thereby obtaining an option pricing formula that preserves the martingale property without directly modeling the price movement of the underlying asset.
+
+### 5.2 Put Option Pricing Formula
+
+The derivation of the put option pricing formula starts from the Dupire equation;
+
+$$
+\mathfrak{p}(k, T; s_0) := \mathbb{E}^{\mathbb{Q}} \left[ (k - S_T)^+ \right]
+$$
+
+The Legendre transform is applied to convert the put option price function—originally expressed in terms of strike price and maturity—into a new form involving the dual delta and maturity. Under the assumption of a multiplicatively separable volatility (MSV) structure, this transformation enables the derivation of a put option pricing formula in terms of the dual delta.
+
+$$
+P(k, T; s_0) = b(k, T) \ln\left(1 + e^{\frac{k - s_0}{b(k, T)}}\right)
+$$
+
+Crucially, by defining the structure of the dual delta—which diffuses between 0 and 1—using concepts from Shannon entropy and the variance of a Bernoulli random variable, it becomes possible to obtain the put option formula without explicitly modeling the underlying asset price. In this framework, the dual delta’s uncertainty is characterized by the geometric mean of Shannon entropy and the variance of a Bernoulli random variable with success probability equal to the dual delta itself.
+
+**Key Steps and Concepts:**
+- Legendre Transform: This mathematical transformation allows the expression of a function in terms of new independent variables. In this context, the Legendre transform is used to convert the put option price function from the domain of strike price and maturity to that of dual delta and maturity. The transformed equation is the convex conjugate of the original, so the original function can be recovered via the inverse Legendre transform.
+- Structure of Dual Delta: The dual delta is assumed to reflect both its own uncertainty and the variance of a Bernoulli random variable with success probability equal to the dual delta. Specifically, the structure function for dual delta is defined as the geometric mean of Shannon entropy and this Bernoulli variance.
+- MSV Structure: To maintain the stochastic properties in the dual problem, a multiplicatively separable volatility structure is assumed. This ensures that the volatility coefficient can be factorized, allowing for consistent probabilistic behavior in the transformed space.
+
+### 5.3 Call Option Pricing Formula
+
+Following the derivation of the put option pricing formula, the corresponding call option price is obtained by leveraging the payoff relationship between put and call options. Specifically, the call option formula is derived using the standard put-call parity relationship, leading to a well-structured and practical pricing methodology.
+
+$$
+\max(s_0 - k, 0) = (s_0 - k) + \max(k - s_0, 0)
+$$
+
+$$
+C(k, T; s_0) = b(k, T) \left( \frac{s_0 - k}{b(k, T)} + \pi\left( -\frac{s_0 - k}{b(k, T)} \right) \right)
+$$
+
+In conclusion, the proposed new option pricing formula is structured as follows:
+
+- **Extension of Option Pricing Model**: By applying the Post-SVI model to the volatility function $$ b(k, T) $$, an extended option pricing model is introduced. This transforms the conventional approach—which centers on modeling the underlying asset price—into a strike-price-focused methodology. The new model defines option prices in the dual delta space, offering a novel and robust pricing framework.
+- **Dynamic Volatility Modeling**: Unlike traditional models that assume static volatility, the Post-SVI model structures volatility as a function of time. This enables the pricing model to reflect the dynamic evolution of volatility over time, closely mirroring real-world market conditions.
+- **Market Realism and Robustness**: The proposed methodology is designed to capture structural changes in market volatility, minimize the risk of option mispricing, and reduce the possibility of static arbitrage opportunities. As a result, it presents a sophisticated and realistic pricing approach that is well-suited to today’s complex financial markets.
+
+
 
