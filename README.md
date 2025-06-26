@@ -178,7 +178,7 @@ As a result, it is possible to compare the outcomes of the original raw SVI opti
 <img width="904" alt="image" src="https://github.com/user-attachments/assets/547c087f-93bf-4aa3-86f5-c7bb2001e9e9" />
 
 
-## V. Dynamic Delta Hedging
+## V. Post SVI Option Pricing
 
 ### 5.1 Assumptions
 
@@ -244,6 +244,35 @@ In conclusion, the proposed new option pricing formula is structured as follows:
 - **Extension of Option Pricing Model**: By applying the Post-SVI model to the volatility function $$ b(k, T) $$, an extended option pricing model is introduced. This transforms the conventional approach—which centers on modeling the underlying asset price—into a strike-price-focused methodology. The new model defines option prices in the dual delta space, offering a novel and robust pricing framework.
 - **Dynamic Volatility Modeling**: Unlike traditional models that assume static volatility, the Post-SVI model structures volatility as a function of time. This enables the pricing model to reflect the dynamic evolution of volatility over time, closely mirroring real-world market conditions.
 - **Market Realism and Robustness**: The proposed methodology is designed to capture structural changes in market volatility, minimize the risk of option mispricing, and reduce the possibility of static arbitrage opportunities. As a result, it presents a sophisticated and realistic pricing approach that is well-suited to today’s complex financial markets.
+
+## VI. Dynamic Delta Hedging
+
+Dynamic delta hedging was conducted using the Post SVI option pricing formulas. The rebalancing frequency was set to daily, and an at-the-money option was selected for the analysis. 
+For the put option, a long position was assumed; for the call option, a short position was assumed. Delta hedging was then performed under these conditions.
+
+### 5.1 Put Option (Long)
+The Post-SVI model provided better hedging results in terms of cost, mainly because it more accurately reflects extreme delta movements.
+
+- **Post-SVI Model Superiority**: Delta hedging based on the Post-SVI model resulted in greater hedging profits compared to the Black-Scholes model.
+- **Improved Delta Sensitivity**: The SVI-based delta more accurately captures extreme changes in delta, leading to better hedging outcomes. This is particularly evident when delta exhibits significant fluctuations.
+- **Hedging Cost Dynamics**: For a long put position, it is typical to incur costs when purchasing the underlying asset for delta hedging. However, as the absolute value of delta decreases, the hedging process can actually generate profits. In this context, the Post-SVI model demonstrated superior performance.
+
+<img width="898" alt="image" src="https://github.com/user-attachments/assets/e1aecee6-de9a-413f-ad1b-9054b0b03f17" />
+
+Black-Scholes (Right), Post SVI(Left), K=5165
+
+### 5.2 Call Option (Short)
+Although the difference was marginal, the Post-SVI model resulted in lower hedging costs. It effectively minimizes unnecessary hedging and enhances risk management, demonstrating the superiority of the Post-SVI approach.
+
+- **Post-SVI Model Superiority**: Delta hedging based on the Post-SVI model also yielded greater profits than the Black-Scholes model for a short call position.
+- **Market Volatility Impact**: When delta increases, additional purchases of the underlying asset are required. In highly volatile markets, delta can change rapidly, increasing hedging frequency and costs.
+- **Efficient Risk Management**: The Post-SVI model helps control unnecessary hedging and reduces overall costs, leading to more efficient risk management.
+
+<img width="898" alt="image" src="https://github.com/user-attachments/assets/83e504c7-0f77-4962-b0fe-54b11de8af51" />
+
+Black-Scholes (Right), Post SVI(Left), K=5235
+
+By employing the Post-SVI model for dynamic delta hedging, both put long and call short positions benefited from more accurate delta estimation, especially during periods of extreme market movements. This approach reduces hedging costs and improves risk management compared to the traditional Black-Scholes framework. The results highlight the practical advantages of incorporating advanced volatility modeling into hedging strategies.
 
 
 
