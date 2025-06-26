@@ -7,7 +7,7 @@ This study builds upon the previous research titled "Volatility Smile Optimizati
 
 ## I. Research Background and Objectives
 
-## 1.1 Importance of Volatility Estimation
+### 1.1 Importance of Volatility Estimation
 
 In financial markets, volatility serves as a core metric for quantifying market risk. It plays a pivotal role across multiple domains including option pricing, risk management, and the construction of hedging strategies. Historical market shock events—such as the 2008 global financial crisis, the 2020 COVID-19 pandemic, and the sharp market downturn on August 5, 2024 ("Black Monday")—have all been characterized by abrupt surges in the VIX index. These surges signify increased market uncertainty and are often accompanied by price distortions and enhanced arbitrage opportunities. Therefore, accurate estimation of volatility is essential for ensuring market stability and efficiency.
 
@@ -15,17 +15,17 @@ The VIX index, calculated by the CBOE, reflects the market’s expectation of fu
 
 <img width="736" alt="image" src="https://github.com/user-attachments/assets/1ba12cfe-37ef-47a3-99db-beb6349b6312" />
 
-## 1.2 Limitations of Conventional Models
+### 1.2 Limitations of Conventional Models
 
 The widely-used Black-Scholes model assumes that volatility remains constant over time. However, this assumption fails to capture the abrupt changes and asymmetric nature of volatility observed in real-world financial markets. This structural limitation often leads to option mispricing, ultimately undermining the reliability of financial instruments and market integrity.
 
 To address these shortcomings, the Stochastic Volatility Inspired (SVI) model was developed. The SVI framework allows implied volatility to be expressed as a nonlinear function, which makes it possible to more accurately model skewed and smile-shaped volatility patterns. This enables traders to formulate more realistic hedging strategies based on dynamic volatility surfaces. Nonetheless, even the SVI model falls short in fully capturing time-varying volatility and extreme market asymmetries, revealing the need for further refinement.
 
-## 1.3 Research Objectives
+### 1.3 Research Objectives
 
 This study aims to develop and implement an enhanced model, referred to as the Post-SVI model, which builds upon the SVI framework to establish an arbitrage-free pricing environment. The core objectives are to derive a new option pricing formula based on the Post-SVI model and to construct a dynamic delta hedging strategy that can adapt to real market conditions. By incorporating more realistic representations of volatility, the proposed model seeks to improve pricing accuracy and risk mitigation in options markets.
 
-## 1.4 Key Problems Addressed
+### 1.4 Key Problems Addressed
 
 The Post-SVI model is designed to address two critical issues:
 
