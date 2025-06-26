@@ -184,7 +184,7 @@ As a result, it is possible to compare the outcomes of the original raw SVI opti
 
 To derive option prices using the volatility optimized via the Post-SVI model, the following three assumptions are introduced:
 
-**1. Utilization of Dual Delta**  
+**5.1.1 Utilization of Dual Delta**  
 
 $$
 \Delta_T := \frac{\partial \mathfrak{p}}{\partial k}(K_T, T; s_0), \quad T > 0, \ \Delta_0 \in \{0, 1\}
@@ -194,12 +194,12 @@ $$
 - By doing so, the martingale property can be maintained without directly modeling the price dynamics of the underlying asset.
 - The dual delta is assumed to follow a stochastic process diffusing within the interval [1].
 
-**2. Convex Duality**  
+**5.1.2 Convex Duality**  
 - The Legendre transform of the existing option price is used to reformulate the option pricing problem in the dual delta space.
 - The put option price is convex and differentiable with respect to $$ x $$, so its convex conjugate can be defined.
 - Ultimately, the expression originally formulated in terms of $$ S $$ (the underlying asset price) is transformed into an expression involving the dual delta, thereby deriving a price formula as a function of the strike price.
 
-**3. Dual Dupire Equation**  
+**5.1.3 Dual Dupire Equation**  
 - Under the risk-neutral measure, the price of a put option must equal the expected value of its payoff at maturity, satisfying the Dupire equation.
 - The Dupire equation models option prices with respect to strike price and maturity, which is advantageous for analyzing option convexity and local volatility.
 - However, for the equation to hold in terms of the dual delta, the Multiplicatively Separable Volatility (MSV) condition must be satisfied.
@@ -250,7 +250,7 @@ In conclusion, the proposed new option pricing formula is structured as follows:
 Dynamic delta hedging was conducted using the Post SVI option pricing formulas. The rebalancing frequency was set to daily, and an at-the-money option was selected for the analysis. 
 For the put option, a long position was assumed; for the call option, a short position was assumed. Delta hedging was then performed under these conditions.
 
-### 5.1 Put Option (Long)
+### 6.1 Put Option (Long)
 The Post-SVI model provided better hedging results in terms of cost, mainly because it more accurately reflects extreme delta movements.
 
 - **Post-SVI Model Superiority**: Delta hedging based on the Post-SVI model resulted in greater hedging profits compared to the Black-Scholes model.
@@ -261,7 +261,7 @@ The Post-SVI model provided better hedging results in terms of cost, mainly beca
 
 Black-Scholes (Right), Post SVI(Left), K=5165
 
-### 5.2 Call Option (Short)
+### 6.2 Call Option (Short)
 Although the difference was marginal, the Post-SVI model resulted in lower hedging costs. It effectively minimizes unnecessary hedging and enhances risk management, demonstrating the superiority of the Post-SVI approach.
 
 - **Post-SVI Model Superiority**: Delta hedging based on the Post-SVI model also yielded greater profits than the Black-Scholes model for a short call position.
@@ -274,5 +274,65 @@ Black-Scholes (Right), Post SVI(Left), K=5235
 
 By employing the Post-SVI model for dynamic delta hedging, both put long and call short positions benefited from more accurate delta estimation, especially during periods of extreme market movements. This approach reduces hedging costs and improves risk management compared to the traditional Black-Scholes framework. The results highlight the practical advantages of incorporating advanced volatility modeling into hedging strategies.
 
+## VII. Practical Implications
 
+### 7.1 Enhancement of Option Market Liquidity and Price Formation
 
+![image](https://github.com/user-attachments/assets/82001f29-97ec-4887-8152-790d38aa1401)
+
+- The Post-SVI model enables precise tracking of abnormal implied volatility patterns.
+- It provides market makers with optimized liquidity supply strategies and supports rational price formation even for less liquid options.
+
+### 7.2 Real-Time Volatility Monitoring System
+
+![image](https://github.com/user-attachments/assets/02fe5c72-40a4-48c2-86b0-e10a377bd423)
+
+- While Black-Scholes and Post-SVI models generally provide similar volatility estimates, there are notable differences in the tail regions.
+- The Post-SVI model captures market volatility more realistically, allowing for real-time detection of sudden volatility changes and helping to maintain market stability.
+
+### 7.3 Detection of Option Mispricing and Arbitrage Opportunities
+
+![image](https://github.com/user-attachments/assets/31d3ba90-c6a3-4134-8ef3-1a9caffb1707)
+
+- By comparing market prices with theoretical prices derived from the Post-SVI model, overpriced or underpriced options can be identified.
+- This helps reduce irrational arbitrage opportunities and promotes a fairer trading environment.
+
+### 7.4 Delta Discrepancies and Risk Management Improvements
+
+![image](https://github.com/user-attachments/assets/b6987fe2-912d-4fe2-816d-31b43f7c4608)
+
+- The Post-SVI model provides more accurate delta estimates than Black-Scholes in both low- and high-volatility environments.
+- This reduces delta hedging errors and offers sophisticated risk management tools for both option market participants and market makers.
+
+  Here is your content translated and structured for inclusion in a GitHub README:
+
+## VIII. Limitations and Future Research
+
+### 8.1 Limitations
+
+**Data Limitations and Restricted Study Period**
+  - The full spectrum of volatility smile characteristics may not be fully captured.
+  - Insufficient verification of model applicability during extreme market conditions.
+
+**Computational Efficiency Issues**
+  - The combination of the Post-SVI model and convex duality results in complex calculations.
+  - Potential challenges in real-time trading environments.
+
+**Insufficient Risk Indicator Integration**
+  - Additional risk indicators such as gamma and vega are not yet incorporated.
+
+### 8.2 Future Research Directions
+
+**Improving Computational Efficiency**
+  - Introduction and optimization of high-performance computational algorithms.
+
+**Practical Application Research**
+  - Integration of the Post-SVI model with market stability policies of the Korea Exchange.
+  - Exploration of arbitrage prevention and support strategies for market makers.
+
+**Comprehensive Risk Management System Development**
+  - Model validation through long-term data accumulation.
+
+### 8.3 Conclusion
+
+We propose a new option pricing framework that improves upon the traditional Black-Scholes model by leveraging advanced pricing formulas and the Post-SVI model. Our goal is to help financial markets provide more reliable information to all market participants.
