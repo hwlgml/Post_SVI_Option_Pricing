@@ -40,8 +40,6 @@ Grounded in the above context, this research endeavors to overcome the structura
 
 ### 2.1 SVI(Stochastic Volatility Inspired) Model
 
-
-
 The Stochastic Volatility Inspired (SVI) model was introduced by Jim Gatheral of Merrill Lynch in 1999. It is a simple parametric model used to explain the volatility smile observed in the options market. The SVI model expresses implied volatility as a function of the option’s time to maturity and the difference between the strike price and the underlying asset price. By fitting the volatility smile using five parameters, the model provides a smooth and flexible representation of implied volatility across different strikes and maturities. It accurately reflects the implied volatility surface depending on various strike prices and maturities.
 
 The SVI formula is given by:
@@ -169,7 +167,16 @@ As a result, the patterns observed above were improved compared to those before 
 
 <img width="333" alt="image" src="https://github.com/user-attachments/assets/0eeb55d1-2184-4d68-925f-e1739a2604f1" />
 
-## IV. Post SVI
+## IV. Post SVI Optimization
+
+The optimization process from the previous study, “Volatility Smile Optimization via SVI Model Utilizing NLP Algorithms,” conducted in the "SVI_NLP_Optimization" repository, was identically applied to the Post-SVI model for all maturity dates. 
+- Gradient Descent Algorithm
+- L-BFGS-B Algorithm
+
+As a result, it is possible to compare the outcomes of the original raw SVI optimization with those of the Post-SVI optimization, as shown below. The results demonstrate that Post-SVI more effectively captures and reflects each individual volatility data point across all maturity dates.
+
+<img width="904" alt="image" src="https://github.com/user-attachments/assets/547c087f-93bf-4aa3-86f5-c7bb2001e9e9" />
+
 
 ## V. Dynamic Delta Hedging
 
