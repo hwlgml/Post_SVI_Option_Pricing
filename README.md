@@ -107,7 +107,6 @@ $$
 - $\hat{\nu}_\tau$: Minimum ATM implied variance
 
 ### 2.4. Post-SVI Model
-
 This study ultimately proposes the **Post-SVI model**, an extended version of the classic Stochastic Volatility Inspired (SVI) model. While the original SVI model offers a flexible parametrization of the implied volatility smile, it does not adequately reflect sudden market movements such as volatility jumps. The Post-SVI model addresses this by incorporating three additional parameters — $J$, $\mu_j$, and $\theta$ — to represent structural distortions in the volatility surface.
 
 The implied total variance function under the Post-SVI model is defined as:
@@ -149,6 +148,26 @@ Where:
 By incorporating these new parameters and features, the Post-SVI model improves the accuracy of implied volatility surface modeling, particularly under volatile market conditions. This allows for more robust pricing, hedging, and risk assessment in options markets.
 
 ## III. Research Methodology - Data
+Two primary datasets were utilized in this study:
+- S&P500 Options Data: Employed for parameter optimization of the SVI and Post-SVI models.
+- KOSPI200 Options Data: Applied to implement the Post-SVI model in the domestic Korean financial market.
+
+### 3.1 Data Preprocessing
+A four-step preprocessing pipeline was executed:
+1. Data Filtering: Isolated records with a trade volume ≥ 1.
+2. Scaling: Normalized features for consistent analysis.
+3. Segmentation: Partitioned data by (i) call/put options and (ii) maturity dates.
+4. Volatility Smile Visualization: Mapped implied volatility patterns post-segmentation.
+
+<img width="332" alt="image" src="https://github.com/user-attachments/assets/46c6adfc-7799-46e6-84be-3fda708db763" />
+
+Despite the initial preprocessing, a significant amount of noise remained observable, and there were pronounced differences in trade volume across maturity dates. To address these issues, two additional preprocessing was conducted;
+- IQR (Interquartile Range) method
+- MAD (Median Absolute Deviation) method
+
+As a result, the patterns observed above were improved compared to those before the additional preprocessing; however, residual noise still persists. We intend to resolve this remaining noise through optimization following the application of the SVI model.
+
+<img width="333" alt="image" src="https://github.com/user-attachments/assets/0eeb55d1-2184-4d68-925f-e1739a2604f1" />
 
 ## IV. Post SVI
 
